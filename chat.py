@@ -66,6 +66,18 @@ def split_contents(contents, re_contents):
     return re_contents
 
 
+def spilt_contents_with_count(contents, re_contents):
+    print('開始表格化檔案')
+    for c in contents:
+        s = c.split(' ',1)
+        time = s[0][:5]
+        name = s[0][5:]
+        content = s[1]
+        re_contents.append([time, name, content])
+    print('_結束表格化檔案')
+    return re_contents
+
+
 def exercise1():
     filename = 'exercise1_input.txt'
     names = ['Allen', 'Tom']
@@ -95,14 +107,35 @@ def exercise2():
     w_file('re_' + 'exercise2_input.csv', re_contents)
 
 
+def exercise3():
+    filename = 'exercise3_input.txt'
+    re_contents = []
+    contents = r_file(filename)
+    re_contents = spilt_contents_with_count(contents, re_contents)
+    count_pics(re_contents)
+    while True:
+        print_choose = input('是否需要檢視檔案 y/n? ')
+        if print_choose == 'y':
+            contents_print(re_contents)
+            break
+        elif print_choose == 'n':
+            break
+        else:
+            print('請重新輸入')
+            continue
+    w_file('re_' + 'exercise3_input.csv', re_contents)
+
 def main():
     print('1.FB紀錄重整')
     print('2.Line對話紀錄清單化')
+    print('3.Line對話紀錄分割')
     choose_program = input('請輸入練習程式別')
     if choose_program == '1':
         exercise1()
     elif choose_program == '2':
         exercise2()
+    elif choose_program == '3':
+        exercise3()
     else:
         print('無輸入有效程式，退出程式')
 
