@@ -7,6 +7,7 @@ def r_file(filename):#讀取檔案
     print('_讀取檔案結束')
     return contents
 
+
 def decide_name(contents, names, re_contents):
     print('開始重寫')
     name = ''
@@ -17,6 +18,7 @@ def decide_name(contents, names, re_contents):
             re_contents.append(name + ':' + c)
     print('_重寫結束')
     return re_contents
+
 
 def count_pics(re_contents):
     pic = 0
@@ -36,11 +38,13 @@ def count_pics(re_contents):
     print('Allen一共說了', allen_word_count, '字')
     print('Viki一共說了', viki_word_count, '字')
 
+
 def contents_print(re_contents): #把contents逐條印出
     print('開始逐條印出')
     for c in re_contents:
         print(c)
     print('_結束逐條印出')
+
 
 def w_file(filename, re_contents):
     print('開始儲存檔案')
@@ -48,6 +52,7 @@ def w_file(filename, re_contents):
         for c in re_contents:
             f.write(str(c) + '\n')
     print('_儲存檔案結束')
+
 
 def split_contents(contents, re_contents):
     print('開始表格化檔案')
@@ -60,6 +65,7 @@ def split_contents(contents, re_contents):
     print('_結束表格化檔案')
     return re_contents
 
+
 def exercise1():
     filename = 'exercise1_input.txt'
     names = ['Allen', 'Tom']
@@ -68,6 +74,7 @@ def exercise1():
     decide_name(contents, names, re_contents)
     contents_print(re_contents)
     w_file('re_' + filename, re_contents)
+
 
 def exercise2():
     filename = 'exercise2_input.txt'
@@ -86,6 +93,7 @@ def exercise2():
             print('請重新輸入')
             continue
     w_file('re_' + 'exercise2_input.csv', re_contents)
+
 
 def main():
     print('1.FB紀錄重整')
